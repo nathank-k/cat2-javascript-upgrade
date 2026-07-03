@@ -134,6 +134,40 @@ function setupWishlistForm() {
 }
 
 /* ------------------------------------------------------------
+   FEATURE 3: Form handling with validation feedback
+   ------------------------------------------------------------ */
+function setupNewsletterForm() {
+    const form = document.getElementById("newsletterForm");
+    const nameInput = document.getElementById("newsletterName");
+    const emailInput = document.getElementById("newsletterEmail");
+    const feedback = document.getElementById("newsletterFeedback");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (name === "") {
+            feedback.textContent = "Please enter your name.";
+            feedback.className = "form-feedback error";
+            return;
+        }
+
+        if (!emailPattern.test(email)) {
+            feedback.textContent = "Please enter a valid email address.";
+            feedback.className = "form-feedback error";
+            return;
+        }
+
+        feedback.textContent = "Thanks, " + name + "! You're subscribed with " + email + ".";
+        feedback.className = "form-feedback success";
+        form.reset();
+    });
+}
+
+/* ------------------------------------------------------------
    Initialize
    ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", function () {
@@ -141,4 +175,5 @@ document.addEventListener("DOMContentLoaded", function () {
     renderDeals();
     renderWishlist();
     setupWishlistForm();
+    setupNewsletterForm();
 });

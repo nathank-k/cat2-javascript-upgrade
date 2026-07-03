@@ -186,6 +186,49 @@ section {
     font-style: italic;
 }
 
+#newsletterForm {
+    max-width: 400px;
+}
+
+.form-row {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-row input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
+
+#newsletterForm button[type="submit"] {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#newsletterForm button[type="submit"]:hover {
+    background-color: #006400;
+}
+
+.form-feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.form-feedback.success {
+    color: green;
+}
+
+.form-feedback.error {
+    color: red;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
