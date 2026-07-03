@@ -81,6 +81,36 @@ section {
     background-color: #f5f5f5;
 }
 
+.section-hint {
+    color: gray;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.deal-card {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.deal-card h3 {
+    color: green;
+}
+
+.deal-price {
+    font-weight: bold;
+    color: red;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
