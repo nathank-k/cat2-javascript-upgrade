@@ -70,8 +70,20 @@ function renderDeals() {
 
 /* ------------------------------------------------------------
    FEATURE 2: Dynamically add & remove elements (Shopping List)
+   FEATURE 4: Persistent state with localStorage
    ------------------------------------------------------------ */
-let wishlistItems = [];
+const WISHLIST_KEY = "cleanshelf_shopping_list";
+
+function loadWishlist() {
+    const saved = localStorage.getItem(WISHLIST_KEY);
+    return saved ? JSON.parse(saved) : [];
+}
+
+function saveWishlist(items) {
+    localStorage.setItem(WISHLIST_KEY, JSON.stringify(items));
+}
+
+let wishlistItems = loadWishlist();
 
 function renderWishlist() {
     const list = document.getElementById("wishlistList");
@@ -97,6 +109,7 @@ function renderWishlist() {
         removeBtn.addEventListener("click", function () {
             li.remove();
             wishlistItems.splice(index, 1);
+            saveWishlist(wishlistItems);
             renderWishlist();
         });
 
@@ -112,6 +125,7 @@ function addToWishlist(name) {
         return;
     }
     wishlistItems.push(trimmed);
+    saveWishlist(wishlistItems);
     renderWishlist();
 }
 
