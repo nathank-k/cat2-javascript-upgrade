@@ -21,6 +21,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#deals">Weekly Deals</a></li>
+            <li><a href="#wishlist">Shopping List</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -57,6 +58,22 @@
     <div class="deals-grid" id="dealsContainer">
         <!-- Deal cards are rendered here by script.js -->
     </div>
+</section>
+
+<section id="wishlist">
+    <h2>Your Shopping List</h2>
+    <p class="section-hint">Add items you need to pick up.</p>
+
+    <div class="wishlist-form">
+        <input type="text" id="wishlistInput" placeholder="e.g. Bread, Milk, Rice">
+        <button type="button" id="wishlistAddBtn">Add Item</button>
+    </div>
+
+    <ul class="wishlist-list" id="wishlistList">
+        <!-- List items are rendered here by script.js -->
+    </ul>
+
+    <p class="empty-hint" id="wishlistEmptyHint">Your shopping list is empty. Add something above!</p>
 </section>
 
 <section id="gallery">

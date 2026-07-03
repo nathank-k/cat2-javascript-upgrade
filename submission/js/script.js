@@ -6,22 +6,10 @@
    FEATURE 1: Loop-rendered dynamic content (Services & Deals)
    ------------------------------------------------------------ */
 const servicesData = [
-    {
-        name: "Fresh Produce",
-        description: "Fresh fruits and vegetables every day."
-    },
-    {
-        name: "Household Goods",
-        description: "Wide range of household essentials."
-    },
-    {
-        name: "Customer Support",
-        description: "Friendly and helpful staff."
-    },
-    {
-        name: "Home Delivery",
-        description: "Order online and get your groceries delivered."
-    }
+    { name: "Fresh Produce", description: "Fresh fruits and vegetables every day." },
+    { name: "Household Goods", description: "Wide range of household essentials." },
+    { name: "Customer Support", description: "Friendly and helpful staff." },
+    { name: "Home Delivery", description: "Order online and get your groceries delivered." }
 ];
 
 function renderServices() {
@@ -66,9 +54,82 @@ function renderDeals() {
         price.className = "deal-price";
         price.textContent = deal.price;
 
+        const addBtn = document.createElement("button");
+        addBtn.type = "button";
+        addBtn.textContent = "Add to List";
+        addBtn.addEventListener("click", function () {
+            addToWishlist(deal.name);
+        });
+
         card.appendChild(title);
         card.appendChild(price);
+        card.appendChild(addBtn);
         container.appendChild(card);
+    });
+}
+
+/* ------------------------------------------------------------
+   FEATURE 2: Dynamically add & remove elements (Shopping List)
+   ------------------------------------------------------------ */
+let wishlistItems = [];
+
+function renderWishlist() {
+    const list = document.getElementById("wishlistList");
+    const emptyHint = document.getElementById("wishlistEmptyHint");
+
+    list.innerHTML = "";
+
+    if (wishlistItems.length === 0) {
+        emptyHint.style.display = "block";
+    } else {
+        emptyHint.style.display = "none";
+    }
+
+    wishlistItems.forEach(function (itemName, index) {
+        const li = document.createElement("li");
+
+        const span = document.createElement("span");
+        span.textContent = itemName;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", function () {
+            li.remove();
+            wishlistItems.splice(index, 1);
+            renderWishlist();
+        });
+
+        li.appendChild(span);
+        li.appendChild(removeBtn);
+        list.appendChild(li);
+    });
+}
+
+function addToWishlist(name) {
+    const trimmed = name.trim();
+    if (trimmed === "") {
+        return;
+    }
+    wishlistItems.push(trimmed);
+    renderWishlist();
+}
+
+function setupWishlistForm() {
+    const input = document.getElementById("wishlistInput");
+    const addBtn = document.getElementById("wishlistAddBtn");
+
+    addBtn.addEventListener("click", function () {
+        addToWishlist(input.value);
+        input.value = "";
+        input.focus();
+    });
+
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            addToWishlist(input.value);
+            input.value = "";
+        }
     });
 }
 
@@ -78,4 +139,6 @@ function renderDeals() {
 document.addEventListener("DOMContentLoaded", function () {
     renderServices();
     renderDeals();
+    renderWishlist();
+    setupWishlistForm();
 });

@@ -111,6 +111,81 @@ section {
     color: red;
 }
 
+.deal-card button {
+    margin-top: auto;
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.deal-card button:hover {
+    background-color: #006400;
+}
+
+.wishlist-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.wishlist-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
+
+.wishlist-form button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.wishlist-form button:hover {
+    background-color: #006400;
+}
+
+.wishlist-list {
+    list-style: none;
+    max-width: 500px;
+}
+
+.wishlist-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+}
+
+.wishlist-list li button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.wishlist-list li button:hover {
+    background-color: #a30000;
+}
+
+.empty-hint {
+    color: gray;
+    font-style: italic;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
