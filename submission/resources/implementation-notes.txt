@@ -1,3 +1,49 @@
 CAT 2 Implementation Notes - Cleanshelf Supermarket
 =====================================================
-(In progress - features will be documented here as they are built.)
+
+This site carries forward the Midterm HTML/CSS (Cleanshelf Supermarket)
+and adds the five required JavaScript features. All JS logic lives in
+js/script.js and is linked externally (no inline scripts or onclick
+attributes).
+
+1. Loop-rendered dynamic content
+   - servicesData array (js/script.js) is rendered into
+     #servicesContainer using forEach() + createElement()/appendChild().
+   - dealsData array ("This Week's Deals") is rendered the same way
+     into #dealsContainer, and doubles as the source for the
+     Add-to-List buttons (Feature 2).
+
+2. Dynamically add & remove elements (Shopping List)
+   - Users can type an item in #wishlistInput and click "Add Item"
+     (or press Enter) to add it to the list using createElement()
+     and appendChild().
+   - Deal cards also have "Add to List" buttons that push straight
+     into the same shopping list.
+   - Each list item has its own "Remove" button that deletes it with
+     element.remove().
+
+3. Form handling with validation feedback
+   - The newsletter signup form (#newsletterForm) uses
+     event.preventDefault() and .value to read the name/email inputs.
+   - Validation feedback (empty name, invalid email, or success
+     message) is written back to the page via textContent in
+     #newsletterFeedback, not just the HTML "required" attribute.
+
+4. Persistent state with localStorage
+   - The shopping list is saved to localStorage under the key
+     "cleanshelf_shopping_list" every time an item is added or
+     removed, and reloaded when the page opens, so the list survives
+     a page reload.
+
+5. Click-to-reveal banner
+   - Clicking the banner image (#bannerImg) toggles a "revealed"
+     class on #bannerCaption using classList.toggle(), showing a
+     short caption about Cleanshelf.
+
+Images
+   - The original Midterm images were embedded as base64 data. For
+     CAT 2 they were extracted into real files under images/
+     (banner.jpg, fresh-produce.jpg, shopping-aisle.jpg,
+     customer-service.jpg) and images/sketch.jpg holds the original
+     hand-drawn design sketch, to match the required folder
+     structure.

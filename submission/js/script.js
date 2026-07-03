@@ -182,6 +182,18 @@ function setupNewsletterForm() {
 }
 
 /* ------------------------------------------------------------
+   FEATURE 5: Click-to-reveal on the banner image
+   ------------------------------------------------------------ */
+function setupBannerReveal() {
+    const banner = document.getElementById("bannerImg");
+    const caption = document.getElementById("bannerCaption");
+
+    banner.addEventListener("click", function () {
+        caption.classList.toggle("revealed");
+    });
+}
+
+/* ------------------------------------------------------------
    Initialize
    ------------------------------------------------------------ */
 document.addEventListener("DOMContentLoaded", function () {
@@ -190,4 +202,5 @@ document.addEventListener("DOMContentLoaded", function () {
     renderWishlist();
     setupWishlistForm();
     setupNewsletterForm();
+    setupBannerReveal();
 });
